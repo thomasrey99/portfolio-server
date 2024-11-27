@@ -47,6 +47,8 @@ const loadFiles=async()=>{
     }
 )()
 
+console.log(dataBase.models)
+
 module.exports = {
     dataBase,
     ...dataBase.models,
