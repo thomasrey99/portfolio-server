@@ -1,5 +1,6 @@
 const {Skill}=require("../../db")
-const postSkill=async(data)=>{
+
+const postSkillController=async(data)=>{
     const [skill, created]=await Skill.findOrCreate(
         {
             where:{
@@ -16,5 +17,5 @@ const postSkill=async(data)=>{
 }
 
 module.exports = {
-    postSkill,
+    postSkillController,
 }

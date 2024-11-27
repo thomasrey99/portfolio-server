@@ -1,11 +1,11 @@
-const { getAllSkills } = require("../../controllers/skills/getControllers")
+const { getAllSkillsController } = require("../../controllers/skills/getControllers")
 const { createResponse } = require("../../utils/createResponse")
 
-const getAllSkillsHand=async(req, res)=>{
+const getAllSkillsHandler=async(req, res)=>{
 
     try {
 
-        const skills=await getAllSkills()
+        const skills=await getAllSkillsController()
         const response=await createResponse(
             {
                 status:"success",
@@ -32,5 +32,5 @@ const getAllSkillsHand=async(req, res)=>{
 }
 
 module.exports = {
-    getAllSkillsHand
+    getAllSkillsHandler
 }

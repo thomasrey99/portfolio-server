@@ -1,8 +1,8 @@
 const {Router}=require("express")
-const { postSkillHand } = require("../../handlers/skills/postHandlers")
+const { postSkillHandler } = require("../../handlers/skills/postHandlers")
 
 const postSkillsRouter=Router()
 
-postSkillsRouter.post("/", postSkillHand)
+postSkillsRouter.post("/", postSkillHandler)
 
 module.exports = postSkillsRouter

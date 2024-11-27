@@ -1,7 +1,7 @@
-const { postSkillController } = require("../../controllers/skills/postControllers")
+const { postToolController } = require("../../controllers/tools/postControllers");
 const { createResponse } = require("../../utils/createResponse")
 
-const postSkillHandler=async(req, res)=>{
+const postToolHandler=async(req, res)=>{
 
     try {
 
@@ -9,20 +9,20 @@ const postSkillHandler=async(req, res)=>{
 
         if(name.length!=0&&image.length!=0){
 
-            const skill={
+            const tool={
                 name,
                 image
             }
 
-            const createSkill=await postSkillController(skill)
+            const createTool=await postToolController(tool);
             
-            if(createSkill){
+            if(createTool){
                 
                 const response=await createResponse(
                     {
                         status:"success",
-                        message:"Registro creado con exito",
-                        data:createSkill,
+                        message:"Registro de herramienta creado con exito",
+                        data:createTool,
                         error:false,
                     }
                 )
@@ -49,7 +49,7 @@ const postSkillHandler=async(req, res)=>{
         const response= await createResponse(
             {
                 status:"error",
-                message:"Error al crear el registro",
+                message:"Error al crear el registro de la herramienta",
                 data:null,
                 error:error.message,
             }
@@ -61,5 +61,5 @@ const postSkillHandler=async(req, res)=>{
 }
 
 module.exports = {
-    postSkillHandler
+    postToolHandler
 }
