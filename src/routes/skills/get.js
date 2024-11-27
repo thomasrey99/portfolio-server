@@ -1,5 +1,5 @@
 const {Router}=require("express")
-const { getAllSkillsHand } = require("../../handlers/skills/get")
+const { getAllSkillsHand } = require("../../handlers/skills/getHandlers")
 
 const skillsRouter=Router()
 

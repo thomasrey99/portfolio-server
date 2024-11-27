@@ -1,4 +1,4 @@
-const { getAllSkills } = require("../../controllers/skills/get")
+const { getAllSkills } = require("../../controllers/skills/getControllers")
 const { createResponse } = require("../../utils/createResponse")
 
 const getAllSkillsHand=async(req, res)=>{
