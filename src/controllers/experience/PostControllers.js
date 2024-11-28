@@ -15,7 +15,6 @@ const postExperienceController=async(data)=>{
     if(created){
         return experience.toJSON()
     }else{
-        console.log()
         return false
     }
 }

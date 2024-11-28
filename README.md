@@ -35,4 +35,4 @@ Facilidad de Navegación: Un portafolio bien estructurado y fácil de navegar de
 Un buen portafolio nos facilita la decisión de avanzar en el proceso de contratación, ya que demuestra con claridad tus habilidades, compromiso y profesionalismo en el desarrollo web.
 
 
-name, image, company, year_start, year_end, description
+name, image, institution, year, description
