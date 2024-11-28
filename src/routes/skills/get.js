@@ -1,8 +1,8 @@
-const {Router}=require("express")
-const { getAllSkillsHandler } = require("../../handlers/skills/getHandlers")
+const {Router}=require("express");
+const { getAllSkillsHandler } = require("../../handlers/skills/getHandlers");
 
-const getSkillsRouter=Router()
+const getSkillsRouter=Router();
 
-getSkillsRouter.get("/", getAllSkillsHandler)
+getSkillsRouter.get("/", getAllSkillsHandler);
 
-module.exports = getSkillsRouter
+module.exports = getSkillsRouter;
