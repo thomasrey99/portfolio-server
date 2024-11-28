@@ -15,15 +15,15 @@ const postExperienceHandler=async(req, res)=>{
         }=req.body;
 
         if(
-            name.length!=0
+            (name&&name.length!=0)
             &&
-            image.length!=0
+            (image&&image.length!=0)
             &&
-            company.length!=0
+            (company&&company.length!=0)
             &&
-            description.length!=0
+            (description&&description.length!=0)
             &&
-            year_start
+            (year_start&&year_start.length!=0)
         ){
 
             const experience={

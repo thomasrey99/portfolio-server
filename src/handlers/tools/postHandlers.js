@@ -7,7 +7,11 @@ const postToolHandler=async(req, res)=>{
 
         const {name, image}=req.body;
 
-        if(name.length!=0&&image.length!=0){
+        if(
+            (name&&name.length!=0)
+            &&
+            (image&&image.length!=0)
+        ){
 
             const tool={
                 name,

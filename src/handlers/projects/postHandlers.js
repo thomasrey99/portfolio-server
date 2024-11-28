@@ -13,13 +13,13 @@ const postProjectsHandler=async(req, res)=>{
         }=req.body;
 
         if(
-            name.length!=0
+            (name&&name.length!=0)
             &&
-            image.length!=0
+            (image&&image.length!=0)
             &&
-            description.length!=0
+            (description&&description.length!=0)
             &&
-            url.length!=0
+            (url&&url.length!=0)
         ){
 
             const project={
