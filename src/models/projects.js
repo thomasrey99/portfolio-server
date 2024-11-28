@@ -21,6 +21,10 @@ module.exports=(database)=>{
                 type: DataTypes.TEXT,
                 allowNull:true
             },
+            url:{
+                type: DataTypes.STRING,
+                allowNull:true
+            },
             updatedAt: {
                 type: DataTypes.DATE,
                 allowNull: false,
