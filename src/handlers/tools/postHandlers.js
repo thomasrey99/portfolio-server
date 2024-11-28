@@ -41,10 +41,23 @@ const postToolHandler=async(req, res)=>{
                     }
 
                 )
-                return res.status(201).json(response)
+                return res.status(409).json(response)
             }
 
-        }
+        }else{
+
+            const response= await createResponse(
+                {
+                    status:"error",
+                    message:"Error al crear el registro, se necesitan todos los datos",
+                    data:null,
+                    error:"Falta informacion",
+                }
+            );
+            
+            return res.status(400).json(response);
+        };
+
     } catch (error) {
         const response= await createResponse(
             {
