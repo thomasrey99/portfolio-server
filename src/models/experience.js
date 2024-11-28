@@ -49,4 +49,4 @@ module.exports=(database)=>{
             paranoid:true,
         }
     )
-}
+};

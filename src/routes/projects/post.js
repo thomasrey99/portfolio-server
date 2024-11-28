@@ -1,8 +1,8 @@
-const {Router}=require("express")
-const { postProjectsHandler } = require("../../handlers/projects/postHandlers")
+const {Router}=require("express");
+const { postProjectsHandler } = require("../../handlers/projects/postHandlers");
 
-const postProjectsRouter=Router()
+const postProjectsRouter=Router();
 
-postProjectsRouter.post("/", postProjectsHandler)
+postProjectsRouter.post("/", postProjectsHandler);
 
-module.exports = postProjectsRouter
+module.exports = postProjectsRouter;

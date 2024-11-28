@@ -1,8 +1,8 @@
-const {Router}=require("express")
-const { postSkillHandler } = require("../../handlers/skills/postHandlers")
+const {Router}=require("express");
+const { postSkillHandler } = require("../../handlers/skills/postHandlers");
 
-const postSkillsRouter=Router()
+const postSkillsRouter=Router();
 
-postSkillsRouter.post("/", postSkillHandler)
+postSkillsRouter.post("/", postSkillHandler);
 
-module.exports = postSkillsRouter
+module.exports = postSkillsRouter;
