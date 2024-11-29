@@ -14,7 +14,6 @@ const getExperienceByIdController=async(id)=>{
             return false;
         };
     } catch (error) {
-        console.log(error.message);
         return false;
     }
 };

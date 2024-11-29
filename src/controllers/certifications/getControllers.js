@@ -6,10 +6,14 @@ const getAllCertificationsController=async ()=>{
 };
 
 const getCertificationByIdController=async(id)=>{
-    const certification=await Certification.findByPk(id);
-    if(certification){
-        return certification;
-    }else{
+    try {
+        const certification=await Certification.findByPk(id);
+        if(certification){
+            return certification;
+        }else{
+            return false;
+        };
+    } catch (error) {
         return false;
     };
 };

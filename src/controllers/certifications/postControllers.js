@@ -1,4 +1,4 @@
-const {Certification}=require("../../db")
+const {Certification}=require("../../db");
 
 const postCertificationController=async(data)=>{
 
