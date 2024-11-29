@@ -84,7 +84,7 @@ const getProjectsByIdHandler=async(req, res)=>{
 
             return res.status(400).json(response);
 
-        }
+        };
 
     } catch (error) {
 
@@ -99,7 +99,7 @@ const getProjectsByIdHandler=async(req, res)=>{
         
         return res.status(400).json(response);
 
-    }
+    };
 };
 
 module.exports = {
