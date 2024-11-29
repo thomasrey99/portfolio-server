@@ -5,6 +5,21 @@ const getAllToolsController=async()=>{
     return tools;
 };
 
+const getToolByIdController=async(id)=>{
+    try {
+        const tool=await Tool.findByPk(id);
+        if(tool){
+            return tool;
+        }else{
+            return false;
+        };
+    } catch (error) {
+        return false;
+    };
+};
+
+
 module.exports={
-    getAllToolsController
+    getAllToolsController,
+    getToolByIdController
 };
