@@ -1,8 +1,8 @@
 const { isUUID } = require("validator");
-const { pathCertificationController } = require("../../controllers/certifications/pathControllers");
 const { createResponse } = require("../../utils/createResponse");
+const { patchExperienceController } = require("../../controllers/experience/patchControllers");
 
-const pathCertificationHandler=async(req, res)=>{
+const patchExperienceHandler=async(req, res)=>{
     
     try {
 
@@ -12,13 +12,13 @@ const pathCertificationHandler=async(req, res)=>{
 
         if(isUUID(id)){
             if(data){
-                const updateCertification=await pathCertificationController(id, data);
-                if(updateCertification){
+                const updateExperience=await patchExperienceController(id, data);
+                if(updateExperience){
                     const response=await createResponse(
                         {
                             status:"success",
-                            message:"Registro de certificacion actualizado con exito!",
-                            data:updateCertification,
+                            message:"Registro de experiencia actualizado con exito!",
+                            data:updateExperience,
                             error:false,
                         }
                     )
@@ -28,7 +28,7 @@ const pathCertificationHandler=async(req, res)=>{
                         {
                             status:"error",
                             message:"Registro no actualizado",
-                            data:updateCertification,
+                            data:updateExperience,
                             error:true,
                         }
                     )
@@ -66,7 +66,7 @@ const pathCertificationHandler=async(req, res)=>{
         const response= await createResponse(
             {
                 status:"error",
-                message:"Error al actualizar la certificacion",
+                message:"Error al actualizar la experiencia",
                 data:null,
                 error:error.message,
             }
@@ -79,5 +79,5 @@ const pathCertificationHandler=async(req, res)=>{
 }
 
 module.exports = {
-    pathCertificationHandler
+    patchExperienceHandler
 }

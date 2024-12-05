@@ -1,6 +1,6 @@
 const {Certification}=require("../../db");
 
-const pathCertificationController = async (id, data) => {
+const patchCertificationController = async (id, data) => {
 
     try {
 
@@ -31,5 +31,5 @@ const pathCertificationController = async (id, data) => {
 };
 
 module.exports = {
-    pathCertificationController
+    patchCertificationController
 };
