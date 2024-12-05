@@ -3,19 +3,38 @@ const { Certification } = require("../../db");
 const deleteCertificationController = async (id) => {
   try {
     const certification = await Certification.findByPk(id);
-    console.log(certification);
     if (certification) {
       const deleteCertification = await certification.destroy();
       if (deleteCertification) {
-        return certification;
+        return {
+          status: 200,
+          error: false,
+          data: certification,
+          message: `Registro de certificacion ${certification.name} eliminado con exito`,
+        };
       } else {
-        return false;
+        return {
+          status: 400,
+          error: true,
+          data: null,
+          message: `Error al eliminar el registro de certificacion con UUID ${id}`,
+        };
       }
     } else {
-      return false;
+      return {
+        status: 400,
+        error: true,
+        data: null,
+        message: `No se encontro registro de certificacion con UUID ${id}`,
+      };
     }
   } catch (error) {
-    return false;
+    return {
+      status: 500,
+      error: true,
+      data: null,
+      message: `Error interno del servidor, no se ha podido eliminar el registro con UUID ${id}`,
+    };
   }
 };
 

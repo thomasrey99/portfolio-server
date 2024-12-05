@@ -6,15 +6,35 @@ const deleteProjectController = async (id) => {
     if (project) {
       const deleteProject = await project.destroy();
       if (deleteProject) {
-        return project;
+        return {
+          status: 200,
+          error: false,
+          data: project,
+          message: `Registro del proyecto ${project.name} eliminado con exito`,
+        };
       } else {
-        return false;
+        return {
+          status: 400,
+          error: true,
+          data: null,
+          message: `Error al eliminar el registro del proyecto con UUID ${id}`,
+        };
       }
     } else {
-      return false;
+      return {
+        status: 400,
+        error: true,
+        data: null,
+        message: `No se encontro registro del proyecto con UUID ${id}`,
+      };
     }
   } catch (error) {
-    return false;
+    return {
+      status: 500,
+      error: true,
+      data: null,
+      message: `Error interno del servidor, no se ha podido eliminar el registro con UUID ${id}`,
+    };
   }
 };
 

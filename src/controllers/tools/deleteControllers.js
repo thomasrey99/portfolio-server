@@ -6,15 +6,35 @@ const deleteToolController = async (id) => {
     if (tool) {
       const deleteTool = await tool.destroy();
       if (deleteTool) {
-        return tool;
+        return {
+          status: 200,
+          error: false,
+          data: Tool,
+          message: `Registro de la habilidad ${tool.name} eliminado con exito`,
+        };
       } else {
-        return false;
+        return {
+          status: 400,
+          error: true,
+          data: null,
+          message: `Error al eliminar el registro de la habilidad con UUID ${id}`,
+        };
       }
     } else {
-      return false;
+      return {
+        status: 400,
+        error: true,
+        data: null,
+        message: `No se encontro registro de la habilidad con UUID ${id}`,
+      };
     }
   } catch (error) {
-    return false;
+    return {
+      status: 500,
+      error: true,
+      data: null,
+      message: `Error interno del servidor, no se ha podido eliminar el registro con UUID ${id}`,
+    };
   }
 };
 

@@ -1,4 +1,3 @@
-const { isUUID } = require("validator");
 const { createResponse } = require("../../utils/createResponse");
 const {
   deleteProjectController,
@@ -7,46 +6,22 @@ const {
 const deleteProjectHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    if (isUUID(id)) {
-      const deleteProject = await deleteProjectController(id);
-      if (deleteProject) {
-        const response = await createResponse({
-          status: "success",
-          message: "Registro del proyecto eliminado con exito",
-          data: deleteProject,
-          error: false,
-        });
-
-        return res.status(200).json(response);
-      } else {
-        const response = await createResponse({
-          status: "error",
-          message: "Error al eliminar registro del proyecto",
-          data: null,
-          error: true,
-        });
-
-        return res.status(400).json(response);
-      }
-    } else {
-      const response = await createResponse({
-        status: "error",
-        message: "Error al eliminar registro",
-        data: null,
-        error: `Registro con ${id} no encontrado`,
-      });
-
-      return res.status(400).json(response);
-    }
+    const { status, error, data, message } = await deleteProjectController(id);
+    const response = await createResponse({
+      status: error ? "fail" : "success",
+      message: message,
+      data: data,
+      error: error,
+    });
+    return res.status(status).json(response);
   } catch (error) {
     const response = await createResponse({
-      status: "error",
-      message: "Error al eliminar registro del proyecto",
+      status: "fail",
+      message: error.message,
       data: null,
-      error: error.message,
+      error: true,
     });
-
-    return res.status(400).json(response);
+    return res.status(500).json(response);
   }
 };
 

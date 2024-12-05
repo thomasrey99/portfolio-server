@@ -29,31 +29,17 @@ const getAllCertificationsHandler = async (req, res) => {
 };
 
 const getCertificationsByIdHandler = async (req, res) => {
-  const { id } = req.params;
-
   try {
-    if (isUUID(id)) {
-      const certification = await getCertificationByIdController(id);
-
-      if (certification) {
-        const response = await createResponse({
-          status: "success",
-          message: "Registros de la certificacion obtenidos con exito",
-          data: certification,
-          error: false,
-        });
-
-        return res.status(200).json(response);
-      } else {
-        const response = await createResponse({
-          status: "error",
-          message: "Error al cargar registro de la certificacion",
-          data: null,
-          error: `Registro con ${id} no encontrado`,
-        });
-
-        return res.status(400).json(response);
-      }
+    const { id } = req.params;
+    const certification = await getCertificationByIdController(id);
+    if (certification) {
+      const response = await createResponse({
+        status: "success",
+        message: "Registros de la certificacion obtenidos con exito",
+        data: certification,
+        error: false,
+      });
+      return res.status(200).json(response);
     } else {
       const response = await createResponse({
         status: "error",
@@ -61,7 +47,6 @@ const getCertificationsByIdHandler = async (req, res) => {
         data: null,
         error: `Registro con ${id} no encontrado`,
       });
-
       return res.status(400).json(response);
     }
   } catch (error) {

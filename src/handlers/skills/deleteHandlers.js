@@ -1,4 +1,3 @@
-const { isUUID } = require("validator");
 const { createResponse } = require("../../utils/createResponse");
 const {
   deleteSkillController,
@@ -7,46 +6,22 @@ const {
 const deleteSkillHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    if (isUUID(id)) {
-      const deleteSkill = await deleteSkillController(id);
-      if (deleteSkill) {
-        const response = await createResponse({
-          status: "success",
-          message: "Registro de la habilidad eliminado con exito",
-          data: deleteSkill,
-          error: false,
-        });
-
-        return res.status(200).json(response);
-      } else {
-        const response = await createResponse({
-          status: "error",
-          message: "Error al eliminar registro de habilidad",
-          data: null,
-          error: true,
-        });
-
-        return res.status(400).json(response);
-      }
-    } else {
-      const response = await createResponse({
-        status: "error",
-        message: "Error al eliminar registro",
-        data: null,
-        error: `Registro con ${id} no encontrado`,
-      });
-
-      return res.status(400).json(response);
-    }
+    const { status, error, data, message } = await deleteSkillController(id);
+    const response = await createResponse({
+      status: error ? "fail" : "success",
+      message: message,
+      data: data,
+      error: error,
+    });
+    return res.status(status).json(response);
   } catch (error) {
     const response = await createResponse({
-      status: "error",
-      message: "Error al eliminar registro de habilidad",
+      status: "fail",
+      message: error.message,
       data: null,
-      error: error.message,
+      error: true,
     });
-
-    return res.status(400).json(response);
+    return res.status(500).json(response);
   }
 };
 

@@ -6,15 +6,35 @@ const deleteExperienceController = async (id) => {
     if (experience) {
       const deleteExperience = await experience.destroy();
       if (deleteExperience) {
-        return experience;
+        return {
+          status: 200,
+          error: false,
+          data: experience,
+          message: `Registro de experiencia en ${experience.name} eliminado con exito`,
+        };
       } else {
-        return false;
+        return {
+          status: 400,
+          error: true,
+          data: null,
+          message: `Error al eliminar el registro de experiencia con UUID ${id}`,
+        };
       }
     } else {
-      return false;
+      return {
+        status: 400,
+        error: true,
+        data: null,
+        message: `No se encontro registro de experiencia con UUID ${id}`,
+      };
     }
   } catch (error) {
-    return false;
+    return {
+      status: 500,
+      error: true,
+      data: null,
+      message: `Error interno del servidor, no se ha podido eliminar el registro con UUID ${id}`,
+    };
   }
 };
 
