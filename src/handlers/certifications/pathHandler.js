@@ -1,8 +1,8 @@
 const { isUUID } = require("validator");
-const { putCertificationController } = require("../../controllers/certifications/putControllers");
+const { pathCertificationController } = require("../../controllers/certifications/pathControllers");
 const { createResponse } = require("../../utils/createResponse");
 
-const putCertificationHandler=async(req, res)=>{
+const pathCertificationHandler=async(req, res)=>{
     
     try {
 
@@ -12,7 +12,7 @@ const putCertificationHandler=async(req, res)=>{
 
         if(isUUID(id)){
             if(data){
-                const updateCertification=await putCertificationController(id, data);
+                const updateCertification=await pathCertificationController(id, data);
                 if(updateCertification){
                     const response=await createResponse(
                         {
@@ -79,5 +79,5 @@ const putCertificationHandler=async(req, res)=>{
 }
 
 module.exports = {
-    putCertificationHandler
+    pathCertificationHandler
 }
