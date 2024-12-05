@@ -21,6 +21,7 @@ const postCertificationsHandler=async(req, res)=>{
             (description&&description.length!=0)
             &&
             (year&&year.length!=0)
+            &&
             (institution&&institution.length!=0)
         ){
 
