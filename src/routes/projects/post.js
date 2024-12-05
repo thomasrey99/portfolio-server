@@ -1,7 +1,7 @@
-const {Router}=require("express");
+const { Router } = require("express");
 const { postProjectsHandler } = require("../../handlers/projects/postHandlers");
 
-const postProjectsRouter=Router();
+const postProjectsRouter = Router();
 
 postProjectsRouter.post("/", postProjectsHandler);
 

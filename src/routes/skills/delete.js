@@ -1,7 +1,7 @@
-const {Router}=require("express");
+const { Router } = require("express");
 const { deleteSkillHandler } = require("../../handlers/skills/deleteHandlers");
 
-const deleteSkillRouter=Router();
+const deleteSkillRouter = Router();
 
 deleteSkillRouter.delete("/:id", deleteSkillHandler);
 

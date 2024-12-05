@@ -33,6 +33,3 @@ Facilidad de Navegación: Un portafolio bien estructurado y fácil de navegar de
 9. Actualización Reciente
 Última Actividad: Nos gusta ver que el portafolio se mantenga actualizado con tus proyectos y habilidades más recientes.
 Un buen portafolio nos facilita la decisión de avanzar en el proceso de contratación, ya que demuestra con claridad tus habilidades, compromiso y profesionalismo en el desarrollo web.
-
-
-name, image, description, url

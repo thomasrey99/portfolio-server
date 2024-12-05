@@ -1,8 +1,8 @@
-const {Router}=require("express");
+const { Router } = require("express");
 const { patchToolHandler } = require("../../handlers/tools/patchHandlers");
 
-const patchToolRouter=Router();
+const patchToolRouter = Router();
 
-patchToolRouter.patch("/:id", patchToolHandler)
+patchToolRouter.patch("/:id", patchToolHandler);
 
 module.exports = patchToolRouter;

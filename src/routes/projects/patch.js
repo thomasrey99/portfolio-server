@@ -1,9 +1,10 @@
-const {Router}=require("express");
-const { patchProjectHandler } = require("../../handlers/projects/patchHandlers");
+const { Router } = require("express");
+const {
+  patchProjectHandler,
+} = require("../../handlers/projects/patchHandlers");
 
+const patchProjectRouter = Router();
 
-const patchProjectRouter=Router();
-
-patchProjectRouter.patch("/:id", patchProjectHandler)
+patchProjectRouter.patch("/:id", patchProjectHandler);
 
 module.exports = patchProjectRouter;

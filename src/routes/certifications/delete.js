@@ -1,9 +1,10 @@
-const {Router}=require("express");
-const { deleteCertificationHandler } = require("../../handlers/certifications/deleteHandlers");
+const { Router } = require("express");
+const {
+  deleteCertificationHandler,
+} = require("../../handlers/certifications/deleteHandlers");
 
+const deleteCertificationsRouter = Router();
 
-const deleteCertificationsRouter=Router();
-
-deleteCertificationsRouter.delete("/:id", deleteCertificationHandler)
+deleteCertificationsRouter.delete("/:id", deleteCertificationHandler);
 
 module.exports = deleteCertificationsRouter;

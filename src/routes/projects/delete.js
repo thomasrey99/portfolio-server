@@ -1,7 +1,9 @@
-const {Router}=require("express");
-const { deleteProjectHandler } = require("../../handlers/projects/deleteHandlers");
+const { Router } = require("express");
+const {
+  deleteProjectHandler,
+} = require("../../handlers/projects/deleteHandlers");
 
-const deleteProjectRouter=Router();
+const deleteProjectRouter = Router();
 
 deleteProjectRouter.delete("/:id", deleteProjectHandler);
 

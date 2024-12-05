@@ -1,7 +1,10 @@
-const {Router}=require("express");
-const { getAllSkillsHandler, getSkillByIdHandler } = require("../../handlers/skills/getHandlers");
+const { Router } = require("express");
+const {
+  getAllSkillsHandler,
+  getSkillByIdHandler,
+} = require("../../handlers/skills/getHandlers");
 
-const getSkillsRouter=Router();
+const getSkillsRouter = Router();
 
 getSkillsRouter.get("/", getAllSkillsHandler);
 getSkillsRouter.get("/:id", getSkillByIdHandler);

@@ -1,9 +1,10 @@
-const {Router}=require("express");
-const { patchExperienceHandler } = require("../../handlers/experience/patchHandlers");
+const { Router } = require("express");
+const {
+  patchExperienceHandler,
+} = require("../../handlers/experience/patchHandlers");
 
+const patchExperienceRouter = Router();
 
-const patchExperienceRouter=Router();
-
-patchExperienceRouter.patch("/:id", patchExperienceHandler)
+patchExperienceRouter.patch("/:id", patchExperienceHandler);
 
 module.exports = patchExperienceRouter;

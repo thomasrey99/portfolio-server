@@ -1,44 +1,44 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports=(database)=>{
-    database.define(
-        "Project",
-        {
-            id:{
-                type: DataTypes.UUID,
-                defaultValue: DataTypes.UUIDV4,
-                primaryKey: true,
-            },
-            name:{
-                type: DataTypes.STRING,
-                allowNull:false
-            },
-            image:{
-                type: DataTypes.STRING,
-                allowNull:false
-            },
-            description:{
-                type: DataTypes.TEXT,
-                allowNull:true
-            },
-            url:{
-                type: DataTypes.STRING,
-                allowNull:true
-            },
-            updatedAt: {
-                type: DataTypes.DATE,
-                allowNull: false,
-                defaultValue: DataTypes.NOW,
-            },
-            deletedAt: {
-                type: DataTypes.DATE,
-                allowNull: true,
-            },
-        },
-        {
-            freezeTableName: true,
-            timestamps: true,
-            paranoid:true,
-        }
-    )
-}
+module.exports = (database) => {
+  database.define(
+    "Project",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      url: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
+    },
+    {
+      freezeTableName: true,
+      timestamps: true,
+      paranoid: true,
+    }
+  );
+};

@@ -1,7 +1,7 @@
-const {Router}=require("express");
+const { Router } = require("express");
 const { deleteToolHandler } = require("../../handlers/tools/deleteHandlers");
 
-const deleteToolRouter=Router();
+const deleteToolRouter = Router();
 
 deleteToolRouter.delete("/:id", deleteToolHandler);
 

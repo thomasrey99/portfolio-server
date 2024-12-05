@@ -1,7 +1,10 @@
-const {Router}=require("express");
-const { getAllProjectsHandler, getProjectsByIdHandler } = require("../../handlers/projects/getHandlers");
+const { Router } = require("express");
+const {
+  getAllProjectsHandler,
+  getProjectsByIdHandler,
+} = require("../../handlers/projects/getHandlers");
 
-const getProjectsRouter=Router();
+const getProjectsRouter = Router();
 
 getProjectsRouter.get("/", getAllProjectsHandler);
 getProjectsRouter.get("/:id", getProjectsByIdHandler);
