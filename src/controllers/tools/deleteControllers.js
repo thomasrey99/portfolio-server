@@ -33,7 +33,7 @@ const deleteToolController = async (id) => {
       status: 500,
       error: true,
       data: null,
-      message: `Error interno del servidor, no se ha podido eliminar el registro con UUID ${id}`,
+      message: error.message,
     };
   }
 };

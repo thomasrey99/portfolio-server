@@ -1,4 +1,3 @@
-const { isUUID } = require("validator");
 const {
   getAllCertificationsController,
   getCertificationByIdController,
@@ -7,57 +6,45 @@ const { createResponse } = require("../../utils/createResponse");
 
 const getAllCertificationsHandler = async (req, res) => {
   try {
-    const certifications = await getAllCertificationsController();
+    const { status, error, data, message } = await getAllCertificationsController();
     const response = await createResponse({
-      status: "success",
-      message: "Registros de certificaciones obtenidos con exito",
-      data: certifications,
-      error: false,
+      status: error ? "fail" : "success",
+      message: message,
+      data: data,
+      error: error,
     });
-
-    return res.status(200).json(response);
+    return res.status(status).json(response);
   } catch (error) {
     const response = await createResponse({
-      status: "error",
-      message: "Error al cargar registro de certificaciones",
+      status: "fail",
+      message: error.message,
       data: null,
-      error: error.message,
+      error: true,
     });
-
-    return res.status(400).json(response);
+    return res.status(500).json(response);
   }
 };
 
 const getCertificationsByIdHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const certification = await getCertificationByIdController(id);
-    if (certification) {
-      const response = await createResponse({
-        status: "success",
-        message: "Registros de la certificacion obtenidos con exito",
-        data: certification,
-        error: false,
-      });
-      return res.status(200).json(response);
-    } else {
-      const response = await createResponse({
-        status: "error",
-        message: "Error al cargar registro de la certificacion",
-        data: null,
-        error: `Registro con ${id} no encontrado`,
-      });
-      return res.status(400).json(response);
-    }
+    const { status, error, data, message } =
+      await getCertificationByIdController(id);
+    const response = await createResponse({
+      status: error ? "fail" : "success",
+      message: message,
+      data: data,
+      error: error,
+    });
+    return res.status(status).json(response);
   } catch (error) {
     const response = await createResponse({
-      status: "error",
-      message: "Error al cargar registro de la certificacion",
+      status: "fail",
+      message: error.message,
       data: null,
-      error: error.message,
+      error: true,
     });
-
-    return res.status(400).json(response);
+    return res.status(500).json(response);
   }
 };
 
