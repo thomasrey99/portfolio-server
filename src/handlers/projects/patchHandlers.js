@@ -1,8 +1,8 @@
 const { isUUID } = require("validator");
 const { createResponse } = require("../../utils/createResponse");
-const { patchExperienceController } = require("../../controllers/experience/patchControllers");
+const { patchProjectController } = require("../../controllers/projects/patchControllers");
 
-const patchExperienceHandler=async(req, res)=>{
+const patchProjectHandler=async(req, res)=>{
     
     try {
 
@@ -12,13 +12,13 @@ const patchExperienceHandler=async(req, res)=>{
 
         if(isUUID(id)){
             if(data){
-                const updateExperience=await patchExperienceController(id, data);
-                if(updateExperience){
+                const updateProject=await patchProjectController(id, data);
+                if(updateProject){
                     const response=await createResponse(
                         {
                             status:"success",
-                            message:"Registro de experiencia actualizado con exito!",
-                            data:updateExperience,
+                            message:"Registro de proyecto actualizado con exito!",
+                            data:updateProject,
                             error:false,
                         }
                     )
@@ -66,7 +66,7 @@ const patchExperienceHandler=async(req, res)=>{
         const response= await createResponse(
             {
                 status:"error",
-                message:"Error al actualizar la experiencia",
+                message:"Error al actualizar el proyecto",
                 data:null,
                 error:error.message,
             }
@@ -79,5 +79,5 @@ const patchExperienceHandler=async(req, res)=>{
 }
 
 module.exports = {
-    patchExperienceHandler
+    patchProjectHandler
 }
