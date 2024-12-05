@@ -1,4 +1,3 @@
-const { isUUID } = require("validator");
 const {
   getAllSkillsController,
   getSkillByIdController,
