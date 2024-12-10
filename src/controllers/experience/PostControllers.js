@@ -10,9 +10,19 @@ const postExperienceController = async (data) => {
   });
 
   if (created) {
-    return experience.toJSON();
+    return {
+      status: 200,
+      error: false,
+      data: experience,
+      message: "Registro de experiencia creado con exito",
+    };
   } else {
-    return false;
+    return {
+      status: 409,
+      error: true,
+      data: experience ? experience : null,
+      message: "Error al crear o el registro ya existe",
+    };
   }
 };
 

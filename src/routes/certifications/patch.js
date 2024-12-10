@@ -33,6 +33,11 @@ const schemas = [
 ];
 const patchCertificationsRouter = Router();
 
-patchCertificationsRouter.patch("/:id", UUIDValidatorMiddleware, dataMiddlewareValidator(schemas, false), patchCertificationHandler);
+patchCertificationsRouter.patch(
+  "/:id",
+  UUIDValidatorMiddleware,
+  dataMiddlewareValidator(schemas, false),
+  patchCertificationHandler
+);
 
 module.exports = patchCertificationsRouter;
