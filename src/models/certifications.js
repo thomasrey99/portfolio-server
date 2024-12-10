@@ -23,6 +23,7 @@ module.exports=(database)=>{
             },
             year:{
                 type: DataTypes.STRING,
+                allowNull:false
             },
             description:{
                 type: DataTypes.TEXT,

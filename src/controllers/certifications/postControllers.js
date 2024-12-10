@@ -18,9 +18,9 @@ const postCertificationController = async (data) => {
       };
     } else {
       return {
-        status: 204,
+        status: 200,
         error: false,
-        data: certification?certification:null,
+        data: certification ? certification : null,
         message: "Error al crear o el registro ya existe",
       };
     }

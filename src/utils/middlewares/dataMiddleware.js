@@ -1,6 +1,6 @@
 const { createResponse } = require("../createResponse");
 
-const dataMiddlewareValidator = (schemas, isPost = false) => {
+const dataMiddlewareValidator =(schemas, isPost = false) => {
   return (req, res, next) => {
     try {
       const errors = [];
