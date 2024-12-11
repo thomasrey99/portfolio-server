@@ -10,7 +10,7 @@ const postProjectController = async (data) => {
 
   if (created) {
     return {
-      status: 200,
+      status: 201,
       error: false,
       data: project,
       message: "Registro del proyecto creado con exito",

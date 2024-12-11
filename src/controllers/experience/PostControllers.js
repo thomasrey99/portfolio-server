@@ -11,7 +11,7 @@ const postExperienceController = async (data) => {
 
   if (created) {
     return {
-      status: 200,
+      status: 201,
       error: false,
       data: experience,
       message: "Registro de experiencia creado con exito",

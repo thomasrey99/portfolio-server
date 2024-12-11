@@ -11,7 +11,7 @@ const postCertificationController = async (data) => {
     });
     if (created) {
       return {
-        status: 200,
+        status: 201,
         error: false,
         data: certification,
         message: "Registro de certificacion creado con exito",

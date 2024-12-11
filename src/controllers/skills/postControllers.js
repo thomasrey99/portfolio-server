@@ -8,9 +8,19 @@ const postSkillController = async (data) => {
     defaults: data,
   });
   if (created) {
-    return skill.toJSON();
+    return {
+      status: 201,
+      error: false,
+      data: skill,
+      message: "Registro de habilidad creado con exito",
+    };
   } else {
-    return false;
+    return {
+      status: 409,
+      error: true,
+      data: skill ? skill : null,
+      message: "Error al crear o el registro ya existe",
+    };
   }
 };
 
