@@ -1,4 +1,3 @@
-const { isUUID } = require("validator");
 const { createResponse } = require("../../utils/createResponse");
 const {
   patchExperienceController,
@@ -7,57 +6,26 @@ const {
 const patchExperienceHandler = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const { data } = req.body;
-
-    if (isUUID(id)) {
-      if (data) {
-        const updateExperience = await patchExperienceController(id, data);
-        if (updateExperience) {
-          const response = await createResponse({
-            status: "success",
-            message: "Registro de experiencia actualizado con exito!",
-            data: updateExperience,
-            error: false,
-          });
-          return res.status(200).json(response);
-        } else {
-          const response = await createResponse({
-            status: "error",
-            message: "Registro no actualizado",
-            data: null,
-            error: true,
-          });
-          return res.status(400).json(response);
-        }
-      } else {
-        const response = await createResponse({
-          status: "error",
-          message: "Datos no proporcionados",
-          data: null,
-          error: true,
-        });
-        return res.status(200).json(response);
-      }
-    } else {
-      const response = await createResponse({
-        status: "error",
-        message: `UUID ${id} no valido`,
-        data: null,
-        error: true,
-      });
-
-      return res.status(400).json(response);
-    }
+    const experience = req.body;
+    const { status, error, data, message } = await patchExperienceController(
+      id,
+      experience
+    );
+    const response = await createResponse({
+      status: error ? "fail" : "success",
+      message: message,
+      data: data,
+      error: error,
+    });
+    return res.status(status).json(response);
   } catch (error) {
     const response = await createResponse({
-      status: "error",
-      message: "Error al actualizar la experiencia",
+      status: "fail",
+      message: error.message,
       data: null,
-      error: error.message,
+      error: true,
     });
-
-    return res.status(400).json(response);
+    return res.status(500).json(response);
   }
 };
 

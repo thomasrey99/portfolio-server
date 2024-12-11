@@ -1,20 +1,23 @@
 const { Experience } = require("../../db");
 
 const patchExperienceController = async (id, data) => {
-  try {
-    const experience = await Experience.findByPk(id);
-    if (!experience) {
-      return false;
-    }
-    const updatedExperience = await experience.update(data);
-    if (updatedExperience) {
-      return updatedExperience;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    return false;
-  }
+  const [updatedCount, updatedRows] = await Experience.update(data, {
+    where: { id },
+    returning: true,
+  });
+  return updatedCount > 0
+    ? {
+        status: 200,
+        error: false,
+        data: updatedRows,
+        message: "Cambios realizados con exito",
+      }
+    : {
+        status: 404,
+        error: true,
+        data: null,
+        message: "No se realizaron cambios",
+      };
 };
 
 module.exports = {
