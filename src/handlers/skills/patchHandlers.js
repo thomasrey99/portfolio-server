@@ -1,4 +1,3 @@
-const { isUUID } = require("validator");
 const { createResponse } = require("../../utils/createResponse");
 const {
   patchSkillController,
