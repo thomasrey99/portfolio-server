@@ -5,64 +5,26 @@ const { createResponse } = require("../../utils/createResponse");
 
 const postProjectsHandler = async (req, res) => {
   try {
-    const { name, image, description, url } = req.body;
-
-    if (
-      name &&
-      name.length != 0 &&
-      image &&
-      image.length != 0 &&
-      description &&
-      description.length != 0 &&
-      url &&
-      url.length != 0
-    ) {
-      const project = {
-        name,
-        image,
-        url,
-        description,
-      };
-
-      const createProject = await postProjectController(project);
-
-      if (createProject) {
-        const response = await createResponse({
-          status: "success",
-          message: "Registro de proyecto creado con exito",
-          data: createProject,
-          error: false,
-        });
-
-        return res.status(201).json(response);
-      } else {
-        const response = await createResponse({
-          status: "success",
-          message: "El registro ya existe!",
-          data: null,
-          error: false,
-        });
-        return res.status(409).json(response);
-      }
-    } else {
-      const response = await createResponse({
-        status: "error",
-        message: "Error al crear el registro, se necesitan todos los datos",
-        data: null,
-        error: "Falta informacion",
-      });
-
-      return res.status(400).json(response);
-    }
+    const project = req.body;
+    const { status, error, data, message } = await postProjectController(
+      project
+    );
+    const response = createResponse({
+      status: error ? "fail" : "success",
+      message: message,
+      data: data,
+      error: error,
+    });
+    return res.status(status).json(response);
   } catch (error) {
-    const response = await createResponse({
-      status: "error",
-      message: "Error al crear el registro de proyecto",
+    const response = createResponse({
+      status: "fail",
+      message: error.message,
       data: null,
-      error: error.message,
+      error: true,
     });
 
-    return res.status(400).json(response);
+    return res.status(500).json(response);
   }
 };
 
