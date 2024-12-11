@@ -8,21 +8,19 @@ const postProjectController = async (data) => {
     defaults: data,
   });
 
-  if (created) {
-    return {
-      status: 201,
-      error: false,
-      data: project,
-      message: "Registro del proyecto creado con exito",
-    };
-  } else {
-    return {
-      status: 409,
-      error: true,
-      data: project ? project : null,
-      message: "Error al crear o el registro ya existe",
-    };
-  }
+  return created
+    ? {
+        status: 201,
+        error: false,
+        data: project,
+        message: "Registro de proyecto creado con exito",
+      }
+    : {
+        status: 409,
+        error: true,
+        data: project,
+        message: "El registro ya existe",
+      };
 };
 
 module.exports = {

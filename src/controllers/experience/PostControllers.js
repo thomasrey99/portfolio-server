@@ -9,21 +9,19 @@ const postExperienceController = async (data) => {
     defaults: data,
   });
 
-  if (created) {
-    return {
-      status: 201,
-      error: false,
-      data: experience,
-      message: "Registro de experiencia creado con exito",
-    };
-  } else {
-    return {
-      status: 409,
-      error: true,
-      data: experience ? experience : null,
-      message: "Error al crear o el registro ya existe",
-    };
-  }
+  return created
+    ? {
+        status: 201,
+        error: false,
+        data: experience,
+        message: "Registro de experiencia creado con exito",
+      }
+    : {
+        status: 409,
+        error: true,
+        data: experience,
+        message: "El registro ya existe",
+      };
 };
 
 module.exports = {

@@ -7,21 +7,19 @@ const postToolController = async (data) => {
     },
     defaults: data,
   });
-  if (created) {
-    return {
-      status: 201,
-      error: false,
-      data: tool,
-      message: "Registro de herramienta creado con exito",
-    };
-  } else {
-    return {
-      status: 409,
-      error: true,
-      data: tool ? tool : null,
-      message: "Error al crear o el registro ya existe",
-    };
-  }
+  return created
+    ? {
+        status: 201,
+        error: false,
+        data: tool,
+        message: "Registro de herramienta creado con exito",
+      }
+    : {
+        status: 409,
+        error: true,
+        data: tool,
+        message: "El registro ya existe",
+      };
 };
 
 module.exports = {

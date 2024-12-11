@@ -1,37 +1,26 @@
 const { Certification } = require("../../db");
 
 const postCertificationController = async (data) => {
-  try {
-    const [certification, created] = await Certification.findOrCreate({
-      where: {
-        name: data.name,
-        institution: data.institution,
-      },
-      defaults: data,
-    });
-    if (created) {
-      return {
+  const [certification, created] = await Certification.findOrCreate({
+    where: {
+      name: data.name,
+      institution: data.institution,
+    },
+    defaults: data,
+  });
+  return created
+    ? {
         status: 201,
         error: false,
         data: certification,
         message: "Registro de certificacion creado con exito",
-      };
-    } else {
-      return {
+      }
+    : {
         status: 409,
         error: true,
-        data: certification ? certification : null,
-        message: "Error al crear o el registro ya existe",
+        data: certification,
+        message: "El registro ya existe"
       };
-    }
-  } catch (error) {
-    return {
-      status: 500,
-      error: true,
-      data: null,
-      message: error.message,
-    };
-  }
 };
 
 module.exports = {
