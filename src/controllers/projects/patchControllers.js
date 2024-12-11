@@ -1,20 +1,23 @@
 const { Project } = require("../../db");
 
 const patchProjectController = async (id, data) => {
-  try {
-    const project = await Project.findByPk(id);
-    if (!project) {
-      return false;
-    }
-    const updatedProject = await project.update(data);
-    if (updatedProject) {
-      return updatedProject;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    return false;
-  }
+  const [updatedCount, updatedRows] = await Project.update(data, {
+    where: { id },
+    returning: true,
+  });
+  return updatedCount > 0
+    ? {
+        status: 200,
+        error: false,
+        data: updatedRows,
+        message: "Cambios realizados con exito",
+      }
+    : {
+        status: 404,
+        error: true,
+        data: null,
+        message: "No se realizaron cambios",
+      };
 };
 
 module.exports = {
