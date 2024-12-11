@@ -13,6 +13,7 @@ const schemas = [
     type: "string",
   },
 ];
+
 const postSkillsRouter = Router();
 
 postSkillsRouter.post("/", dataMiddlewareValidator(schemas, true), postSkillHandler);
